@@ -8,7 +8,9 @@
     "start": "node app/server.js",
     "test:unit": "./node_modules/.bin/mocha \"./test/unit/*.js\"",
     "test:web": "./node_modules/.bin/mocha \"./test/server/*.js\" --exit",
-    "preinstall": "cp support/git/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push"
+    "preinstall": "cp support/git/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push",
+    "docker:build": "docker build --tag=flowapp:1.0.0 .",
+    "docker:start": "docker run -p3000:3000 flowapp:1.0.0"
   },
   "repository": {
     "type": "git",
