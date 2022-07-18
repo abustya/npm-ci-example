@@ -1,4 +1,4 @@
-FROM node:9
+FROM node:lts
 MAINTAINER László Tóth
 
 COPY app /www/app
@@ -7,9 +7,9 @@ COPY package-lock.json /www
 
 WORKDIR www
 
-RUN npm set progress=false && \
-    npm install --progress=false
+RUN npm config set update-notifier false && \
+    npm ci --omit=dev --ignore-scripts
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["node", "app/server.js"]
