@@ -6,11 +6,11 @@
   "scripts": {
     "test": "npm run test:unit && npm run test:web",
     "start": "node app/server.js",
-    "test:unit": "./node_modules/.bin/mocha \"./test/unit/*.js\"",
-    "test:web": "./node_modules/.bin/mocha \"./test/server/*.js\" --exit",
-    "preinstall": "cp support/git/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push",
+    "test:unit": "mocha test/unit",
+    "test:web": "mocha test/server --exit",
     "docker:build": "docker build --tag=flowapp:1.0.0 .",
-    "docker:start": "docker run -p3000:3000 flowapp:1.0.0"
+    "docker:start": "docker run -p3000:3000 flowapp:1.0.0",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "husky": "^8.0.1",
     "mocha": "^5.2.0"
   },
   "dependencies": {
